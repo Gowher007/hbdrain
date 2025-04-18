@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessing Secure System...</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #terminal {
+      white-space: pre-wrap;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+    .warning {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: red;
+      color: white;
+      font-size: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: blink 0.5s infinite alternate;
+      z-index: 999;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="terminal" role="log" aria-live="polite"></div>
+
+  <div id="warning" class="warning" style="display: none;">
+    ⚠️ SYSTEM COMPROMISED ⚠️<br><br>
+    All data has been extracted!
+  </div>
+
+  <audio id="alertSound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const warning = document.getElementById("warning");
+    const alertSound = document.getElementById("alertSound");
+
+    const fakeCommands = [
+      "[+] Initiating protocol override...",
+      "[*] Accessing kernel root...",
+      "[*] Injecting malware.exe...",
+      "[+] Success! Root access granted!",
+      "[*] Extracting encrypted passwords...",
+      "[+] Dump complete: root_pass.db",
+      "[*] Uploading payload...",
+      "[+] Tracking user activity...",
+      "[!] ALERT: User detection system bypassed.",
+      "[*] Triggering alert..."
+    ];
+
+    let index = 0;
+
+    function typeLine() {
+      if (index < fakeCommands.length) {
+        terminal.innerHTML += fakeCommands[index] + '\n';
+        index++;
+        terminal.scrollTop = terminal.scrollHeight;
+        setTimeout(typeLine, 1000);
+      } else {
+        triggerWarning();
+      }
+    }
+
+    function triggerWarning() {
+      warning.style.display = "flex";
+      alertSound.play();
+      setInterval(() => {
+        const randLine = "0x" + Math.random().toString(16).substr(2, 8).toUpperCase() +
+          " :: " + btoa(Math.random().toString()).substr(0, 10);
+        terminal.innerHTML += randLine + '\n';
+        terminal.scrollTop = terminal.scrollHeight;
+      }, 100);
+    }
+
+    typeLine();
+  </script>
+
+</body>
+</html>

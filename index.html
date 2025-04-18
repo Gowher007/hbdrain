@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday!</title>
+  <style>
+    /* Rainbow background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 1400% 1400%;
+      animation: rainbowBG 15s ease infinite;
+    }
+
+    @keyframes rainbowBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Content styling */
+    .content {
+      position: relative;
+      text-align: center;
+      padding-top: 20vh;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 60px;
+      text-shadow: 2px 2px 5px black;
+      animation: fadeIn 2s ease-out;
+    }
+
+    p {
+      font-size: 24px;
+      margin-top: 10px;
+      animation: fadeIn 3s ease-out;
+    }
+
+    .cake {
+      font-size: 100px;
+      margin-top: 40px;
+      animation: floatCake 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCake {
+      from { transform: translateY(0); }
+      to { transform: translateY(-20px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Rain effect */
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .drop {
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      bottom: 100%;
+      animation: dropFall linear infinite;
+    }
+
+    @keyframes dropFall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <h1>🎉 Happy Birthday, Zunaira Jaan! 🎉</h1>
+  <p>Wishing you joy, love, and magical memories on your special day! 💖</p>
+  <div class="cake">🎂</div>
+</div>
+
+<!-- Rain drops -->
+<div class="rain">
+  <!-- 100 drops -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'drop';
+      drop.style.left = Math.random() * 100 + 'vw';
+      drop.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      drop.style.animationDelay = Math.random() * 5 + 's';
+      document.body.querySelector('.rain').appendChild(drop);
+    }
+  </script>
+	<center><a href="dash.html">Click Me For Surprise</a></center>
+</div>
+<center><a href="dash.html"><b>Click Me For Surprise</a></b></center>
+</body>
+</html>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>
